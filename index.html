@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+    Rock Paper Scissors
+    Copyright (C) 2022 Alessandro Proto - I3a
+    https://alexdevs.me
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS</title>
+
+    <link rel="stylesheet" href="font/font.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main id="main">
+        <div id="main-menu" class="fadein">
+            <h1>Rock Paper Scissors!</h1>
+
+            <p>Pick a set!</p>
+            <div id="set-selection">
+            </div>
+        </div>
+
+        <div id="game" style="display: none;">
+            <p class="text-center">Choose your play</p>
+            <div id="card-selection">
+            </div>
+        </div>
+
+        <div id="result" style="display: none;">
+            <p id="result-status" class="text-center">3</p>
+            <div class="flex">
+                <div id="result-player">
+                    <p class="text-center">You</p>
+                </div>
+
+                <p class="text-center">vs</p>
+
+                <div id="result-cpu">
+                    <p class="text-center">Computer</p>
+                </div>
+            </div>
+
+            <div class="flex">
+                <button onclick="reset()" class="self-center" id="reset-button" style="display: none;">Play again</button>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

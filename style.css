@@ -1,0 +1,299 @@
+/*
+    Rock Paper Scissors
+    Copyright (C) 2022 Alessandro Proto - I3a
+    https://alexdevs.me
+*/
+
+html {
+    height: 100vh;
+}
+
+body {
+    font-family: 'Comic Neue Angular';
+    background-color: #c3deff;
+    color: #555;
+    font-weight: 900;
+    background: repeating-linear-gradient(45deg,
+            #c3deff 0px,
+            #c3deff 20px,
+            #d2ebff 20px,
+            #d2ebff 40px);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+main {
+    margin: auto;
+    max-width: 1200px;
+}
+
+p {
+    font-size: 3rem;
+}
+
+.small {
+    font-size: 1.5rem;
+}
+
+button {
+    font-size: 2rem;
+    font-family: 'Comic Neue Angular';
+    font-weight: 900;
+    color: #555;
+    border-radius: 10px;
+    border: #ff6961 solid 5px;
+    background-color: #fdfd96;
+    outline: none;
+    padding: 5px;
+}
+
+button,
+.interactive {
+    cursor: pointer;
+    transition: ease 100ms;
+}
+
+button:hover,
+.interactive:hover {
+    filter: drop-shadow(0 0 0.75rem #ff6961);
+    transform: scale(1.05);
+}
+
+button:active,
+.interactive:active {
+    filter: drop-shadow(0 0 1rem white);
+    transform: scale(0.95);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.self-center {
+    margin: auto;
+}
+
+.flex {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+#main-menu {
+    text-align: center;
+}
+
+#main-menu h1 {
+    font-size: 6.5em;
+    font-weight: 900;
+    color: #fdfd96;
+    -webkit-text-stroke: #ff6961 5px;
+    animation: beat 500ms infinite;
+}
+
+@keyframes beat {
+    0% {
+        transform: scale(1);
+    }
+
+    10% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#set-selection {
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 20vh;
+}
+
+#card-selection {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.card {
+    display: inline-block;
+    background-color: #fdfd96;
+    border: #555 solid 3px;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+
+    transition: 100ms ease;
+}
+
+
+.card img {
+    width: 128px;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.card p {
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.card.flipped,
+.flipped {
+    transform: rotateY(180deg);
+    filter: contrast(0);
+}
+
+.glow {
+    animation: glow 250ms infinite alternate;
+
+}
+
+@keyframes glow {
+    from {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px 10px #ffdc00;
+    }
+
+    to {
+        transform: scale(1);
+        box-shadow: 0 0 30px 30px #ffdc00;
+    }
+}
+
+.emotional-damage {
+    animation: emotional-damage 1s ease-out 0s 1 normal forwards;
+}
+
+@keyframes emotional-damage {
+    to {
+        transform: scale(0.8) rotate(12deg);
+        filter: brightness(0.6);
+        box-shadow: inset 0 24px 32px -12px black;
+    }
+}
+
+.win {
+    color: #50b650;
+}
+
+
+
+.lose {
+    color: #ff6961;
+}
+
+.tie {}
+
+.fadein {
+    animation: fadein 500ms ease 0s 1 normal forwards;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+        transform: translateY(-100vh);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        display: none;
+    }
+}
+
+.fadeout {
+    animation: fadeout 500ms ease 0s 1 normal forwards;
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh);
+    }
+}
+
+.wobble {
+    animation: wobble 1s ease 0s 3 normal forwards;
+}
+
+@keyframes wobble {
+
+    0%,
+    100% {
+        transform: translateX(0%);
+        transform-origin: 50% 50%;
+    }
+
+    15% {
+        transform: translateX(-30px) rotate(-6deg);
+    }
+
+    30% {
+        transform: translateX(15px) rotate(6deg);
+    }
+
+    45% {
+        transform: translateX(-15px) rotate(-3.6deg);
+    }
+
+    60% {
+        transform: translateX(9px) rotate(2.4deg);
+    }
+
+    75% {
+        transform: translateX(-6px) rotate(-1.2deg);
+    }
+}
+
+.wobble-reverse {
+    animation: wobble-reverse 1s ease 0s 3 normal forwards;
+}
+
+@keyframes wobble-reverse {
+
+    0%,
+    100% {
+        transform: translateX(0%);
+        transform-origin: 50% 50%;
+    }
+
+    15% {
+        transform: translateX(30px) rotate(6deg);
+    }
+
+    30% {
+        transform: translateX(-15px) rotate(-6deg);
+    }
+
+    45% {
+        transform: translateX(15px) rotate(3.6deg);
+    }
+
+    60% {
+        transform: translateX(-9px) rotate(-2.4deg);
+    }
+
+    75% {
+        transform: translateX(6px) rotate(1.2deg);
+    }
+}
