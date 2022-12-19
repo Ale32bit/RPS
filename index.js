@@ -11,6 +11,7 @@ const data = {
 
 let currentSetIndex;
 let userChoice;
+let customSetIndex;
 
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -71,6 +72,8 @@ function loadData() {
         setData.name = rawSetData.name ?? `${setData.set.length} objects`;
 
         data.sets.push(setData)
+
+        document.getElementById("arbitrary-input").max = Object.keys(data.objects).length;
     }
 }
 
@@ -127,6 +130,47 @@ async function loadGame(index) {
     }
 
     switchScene("main-menu", "game");
+}
+
+async function makeArbitrarySet() {
+    let setLength = Number.parseInt(document.getElementById("arbitrary-input").value);
+
+    let errorP = document.getElementById("arbitrary-error");
+    if(!setLength) {
+        errorP.style.display = "";
+        errorP.innerText = "Invalid input!"
+        return;
+    }
+
+    if(setLength <= 0) {
+        errorP.style.display = "";
+        errorP.innerText = "Must be at least 1!"
+        return;
+    }
+
+    let possibleObjects = Object.keys(data.objects);
+
+    setLength = Math.min(setLength, possibleObjects.length)
+
+    let customSet = {
+        name: "Custom set",
+        set: [],
+    };
+
+    for(let i = 0; i < setLength; i++) {
+        let objIndex = randomInt(0, possibleObjects.length);
+        let objName = possibleObjects.splice(objIndex, 1);
+
+        customSet.set.push(objName);
+    }
+
+    if(!customSetIndex) {
+        customSetIndex = data.sets.length;
+    }
+
+    data.sets[customSetIndex] = customSet;
+
+    loadGame(customSetIndex);
 }
 
 function playCard(playerKey) {
@@ -195,6 +239,7 @@ async function showResult(playerKey, cpuKey) {
 }
 
 async function reset() {
+    document.getElementById("arbitrary-error").style.display = "none";
     await switchScene("result", "main-menu");
 
     currentSetIndex = undefined;
@@ -208,6 +253,7 @@ async function reset() {
     document.getElementById("result-cpu").children[1].remove();
 
     document.getElementById("reset-button").style.display = "none";
+
 }
 
 window.onload = main;

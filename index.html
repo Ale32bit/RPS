@@ -24,6 +24,12 @@
             <p>Pick a set!</p>
             <div id="set-selection">
             </div>
+            <div>
+                <p>Or make an arbitrary set</p>
+                <input type="number" id="arbitrary-input" min="3" step="1" value="3">
+                <button onclick="makeArbitrarySet()">Next</button>
+                <p id="arbitrary-error" style="display: none;">Invalid input!</p>
+            </div>
         </div>
 
         <div id="game" style="display: none;">

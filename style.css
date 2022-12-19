@@ -36,7 +36,16 @@ p {
     font-size: 1.5rem;
 }
 
-button {
+#arbitrary-input {
+    width: 10rem;
+}
+
+#arbitrary-error {
+    color: #ff6961;
+    font-size: 2rem;
+}
+
+button, input {
     font-size: 2rem;
     font-family: 'Comic Neue Angular';
     font-weight: 900;
