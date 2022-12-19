@@ -135,6 +135,11 @@ async function loadGame(index) {
 async function makeArbitrarySet() {
     let setLength = Number.parseInt(document.getElementById("arbitrary-input").value);
 
+    if(document.getElementById("arbitrary-input").value == "-0") {
+        window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        return;
+    }
+
     let errorP = document.getElementById("arbitrary-error");
     if(!setLength) {
         errorP.style.display = "";
